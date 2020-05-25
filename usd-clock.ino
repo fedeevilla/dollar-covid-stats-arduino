@@ -32,12 +32,14 @@ void loop()
 {
   String dolar = "";
   String covid = "";
+  String btc = "";
   int i = 0;
 
   if (WiFi.status() == WL_CONNECTED)
   {
     dolar = getDolar();
     covid = getCovid();
+    btc = getBTC();
 
     while (i < 60)
     {
@@ -48,6 +50,15 @@ void loop()
       display.drawString(62, 0, "DOLAR");
       display.setFont(DejaVu_Sans_12);
       display.drawString(62, 22, dolar);
+      display.display();
+      delay(5000);
+
+      display.clear();
+      display.setTextAlignment(TEXT_ALIGN_CENTER);
+      display.setFont(Roboto_Bold_16);
+      display.drawString(62, 0, "BITCOIN");
+      display.setFont(DejaVu_Sans_14);
+      display.drawString(62, 30, btc);
       display.display();
       delay(5000);
 

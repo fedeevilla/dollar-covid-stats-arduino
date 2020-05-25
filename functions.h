@@ -48,3 +48,24 @@ String getCovid()
   http.end();
   return covid;
 }
+
+String getBTC()
+{
+  String btc = "";
+  HTTPClient http;
+
+  http.begin("http://api.coindesk.com/v1/bpi/currentprice/USD.json");
+  int httpCode = http.GET();
+
+  if (httpCode > 0)
+  {
+    String payload = http.getString();
+    DynamicJsonDocument doc(1024);
+    deserializeJson(doc, payload);
+    String price = doc["bpi"]["USD"]["rate_float"];
+    btc = "$ " + price;
+  }
+
+  http.end();
+  return btc;
+}
