@@ -69,3 +69,24 @@ String getBTC()
   http.end();
   return btc;
 }
+
+String getETH()
+{
+  String eth = "";
+  HTTPClient http;
+
+  http.begin("http://facturapp-api.herokuapp.com/eth");
+  int httpCode = http.GET();
+
+  if (httpCode > 0)
+  {
+    String payload = http.getString();
+    DynamicJsonDocument doc(1024);
+    deserializeJson(doc, payload);
+    String price = doc["USD"];
+    eth = "$ " + price;
+  }
+
+  http.end();
+  return eth;
+}

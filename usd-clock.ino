@@ -7,8 +7,8 @@
 #include "functions.h"
 
 SH1106Wire display(0x3c, D2, D1);
-const char *ssid = "ssid";
-const char *password = "password";
+const char *ssid = "VILLA";
+const char *password = "33945330";
 
 void setup()
 {
@@ -31,17 +31,17 @@ void setup()
 void loop()
 {
   String dolar = "";
-  String covid = "";
   String btc = "";
+  String eth = "";
   int i = 0;
 
   if (WiFi.status() == WL_CONNECTED)
   {
     dolar = getDolar();
-    covid = getCovid();
     btc = getBTC();
+    eth = getETH();
 
-    while (i < 60)
+    while (i < 4)
     {
 
       display.clear();
@@ -65,9 +65,9 @@ void loop()
       display.clear();
       display.setTextAlignment(TEXT_ALIGN_CENTER);
       display.setFont(Roboto_Bold_16);
-      display.drawString(62, 0, "COVID");
-      display.setFont(DejaVu_Sans_12);
-      display.drawString(62, 22, covid);
+      display.drawString(62, 0, "ETHEREUM");
+      display.setFont(DejaVu_Sans_14);
+      display.drawString(62, 30, eth);
       display.display();
       delay(5000);
 
