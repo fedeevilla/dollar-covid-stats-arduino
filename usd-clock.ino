@@ -7,8 +7,8 @@
 #include "functions.h"
 
 SH1106Wire display(0x3c, D2, D1);
-const char *ssid = "VILLA";
-const char *password = "33945330";
+const char *ssid = "ssid";
+const char *password = "password";
 
 void setup()
 {
